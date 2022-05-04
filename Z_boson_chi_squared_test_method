@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 PHYS20161 Final project
-Student ID: 10624939
 @author: Pan Zhang
 
 This is a code used for fitting breit_wigner_expression.
