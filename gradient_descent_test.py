@@ -36,7 +36,24 @@ def gradient_descent(x_array, y_array, parameter, epoches):
         parameter = parameter - 1/len(x_array)*gradient * learning_rate
 
     return parameter
+##############
+'Learning rate need to be adjusted, ready to fix'
+##############
+def stochatic_gradient_descent(x_array, y_array, parameter, epoches):
 
+
+    for i in range(epoches):
+        for j in range(len(x_array)):
+            learning_rate = 3*(1/(i+j+1)+0.00001)
+            random_index = int(np.random.uniform(0, len(x_array)))
+            temp_train = np.array([x_array[random_index]])
+
+            gradient = temp_train.T.dot(temp_train.dot(parameter) - y_array[random_index])
+            parameter = parameter - 1/len(x_array)*gradient * learning_rate
+            x_array = np.delete(x_array, random_index, 0) #delete the data we used
+            y_array = np.delete(y_array, random_index, 0)
+
+    return parameter
 new_parameter = gradient_descent(x_array, y_simulate, guess_parameter, 100)
 cost_function(x_array, y_simulate, parameter_simulate)
 
